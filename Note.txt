@@ -1,0 +1,17 @@
+I Will Never Use Shadcn Form Components Again (https://www.youtube.com/watch?v=gjrXeqgxbas)
+
+https://github.com/WebDevSimplified/shadcn-field-component
+https://github.com/Annie-Huang/shadcn-field-component
+
+-------------------------------------------------------------------
+
+PS C:\react> npx create-next-app@latest shadcn-field-component --use-npm
+√ Would you like to use TypeScript? ... Yes
+√ Which linter would you like to use? » ESLint
+√ Would you like to use React Compiler? ... Yes
+√ Would you like to use Tailwind CSS? ... Yes
+√ Would you like your code inside a `src/` directory? ... Yes
+√ Would you like to use App Router? (recommended) ... Yes
+√ Would you like to use Turbopack? (recommended) ... Yes
+√ Would you like to customize the import alias (`@/*` by default)? ... No
+Creating a new Next.js app in C:\react\shadcn-field-component.
