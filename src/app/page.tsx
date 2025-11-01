@@ -43,11 +43,16 @@ export default function Home() {
           <Controller
             control={form.control}
             name='name'
-            render={() => (
-              <Field>
-                <FieldLabel>Name</FieldLabel>
-                <Input />
-                <FieldError errors={[{ message: 'Hi' }]} />
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+                />
+                {/*<FieldError errors={[{ message: 'Hi' }]} />*/}
+                <FieldError errors={[fieldState.error]} />
               </Field>
             )}
           ></Controller>
