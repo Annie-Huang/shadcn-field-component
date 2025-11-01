@@ -1,6 +1,6 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import z from 'zod';
 import { projectSchema } from '@/schemas/project';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -40,11 +40,17 @@ export default function Home() {
     <div className='container px-4 mx-auto my-6'>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <FieldGroup>
-          <Field>
-            <FieldLabel>Name</FieldLabel>
-            <Input />
-            <FieldError errors={[{ message: 'Hi' }]} />
-          </Field>
+          <Controller
+            control={form.control}
+            name='name'
+            render={() => (
+              <Field>
+                <FieldLabel>Name</FieldLabel>
+                <Input />
+                <FieldError errors={[{ message: 'Hi' }]} />
+              </Field>
+            )}
+          ></Controller>
         </FieldGroup>
       </form>
     </div>
