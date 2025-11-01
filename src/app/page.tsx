@@ -29,5 +29,9 @@ export default function Home() {
     }
   };
 
-  return <form onSubmit={form.handleSubmit(onSubmit)}></form>;
+  return (
+    <div className='container px-4 mx-auto my-6'>
+      <form onSubmit={form.handleSubmit(onSubmit)}></form>
+    </div>
+  );
 }
