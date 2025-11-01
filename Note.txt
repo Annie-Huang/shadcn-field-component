@@ -15,3 +15,12 @@ PS C:\react> npx create-next-app@latest shadcn-field-component --use-npm
 √ Would you like to use Turbopack? (recommended) ... Yes
 √ Would you like to customize the import alias (`@/*` by default)? ... No
 Creating a new Next.js app in C:\react\shadcn-field-component.
+
+
+PS C:\react\shadcn-field-component> npx shadcn@latest add field
+√ You need to create a components.json file to add components. Proceed? ... yes
+√ Which color would you like to use as the base color? » Neutral
+✔ Writing components.json.
+
+
+
