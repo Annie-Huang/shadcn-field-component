@@ -6,7 +6,7 @@ https://github.com/Annie-Huang/shadcn-field-component
 https://ui.shadcn.com/docs/forms/react-hook-form
 https://ui.shadcn.com/docs/components/field
 https://ui.shadcn.com/docs/components/input
-
+https://ui.shadcn.com/docs/components/button
 
 -------------------------------------------------------------------
 
@@ -28,4 +28,4 @@ PS C:\react\shadcn-field-component> npx shadcn@latest add field
 ✔ Writing components.json.
 
 PS C:\react\shadcn-field-component> npx shadcn@latest add input
-
+PS C:\react\shadcn-field-component> npx shadcn@latest add button
