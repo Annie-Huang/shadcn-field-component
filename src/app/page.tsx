@@ -51,11 +51,12 @@ export default function Home() {
                   id={field.name}
                   aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
                 />
-                {/*<FieldError errors={[{ message: 'Hi' }]} />*/}
-                <FieldError errors={[fieldState.error]} />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
               </Field>
             )}
-          ></Controller>
+          />
         </FieldGroup>
       </form>
     </div>
