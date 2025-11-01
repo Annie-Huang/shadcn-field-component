@@ -3,6 +3,11 @@ I Will Never Use Shadcn Form Components Again (https://www.youtube.com/watch?v=g
 https://github.com/WebDevSimplified/shadcn-field-component
 https://github.com/Annie-Huang/shadcn-field-component
 
+https://ui.shadcn.com/docs/forms/react-hook-form
+https://ui.shadcn.com/docs/components/field
+https://ui.shadcn.com/docs/components/input
+
+
 -------------------------------------------------------------------
 
 PS C:\react> npx create-next-app@latest shadcn-field-component --use-npm
@@ -22,5 +27,5 @@ PS C:\react\shadcn-field-component> npx shadcn@latest add field
 √ Which color would you like to use as the base color? » Neutral
 ✔ Writing components.json.
 
-
+PS C:\react\shadcn-field-component> npx shadcn@latest add input
 
