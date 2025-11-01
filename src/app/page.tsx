@@ -13,6 +13,7 @@ import {
   FieldLabel,
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
@@ -57,6 +58,7 @@ export default function Home() {
               </Field>
             )}
           />
+          <Button>Create</Button>
         </FieldGroup>
       </form>
     </div>
