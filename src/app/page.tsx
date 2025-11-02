@@ -8,6 +8,8 @@ import { toast } from 'sonner';
 import { createProject } from '@/actions/project';
 import {
   Field,
+  FieldContent,
+  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
@@ -66,7 +68,12 @@ export default function Home() {
             name='description'
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                <FieldContent>
+                  <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                  <FieldDescription>
+                    Be as specific as possible
+                  </FieldDescription>
+                </FieldContent>
                 <Textarea
                   {...field}
                   id={field.name}
