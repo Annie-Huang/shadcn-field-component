@@ -8,6 +8,7 @@ https://ui.shadcn.com/docs/components/field
 https://ui.shadcn.com/docs/components/input
 https://ui.shadcn.com/docs/components/button
 https://ui.shadcn.com/docs/components/sonner
+https://ui.shadcn.com/docs/components/textarea
 
 -------------------------------------------------------------------
 
@@ -31,3 +32,5 @@ PS C:\react\shadcn-field-component> npx shadcn@latest add field
 PS C:\react\shadcn-field-component> npx shadcn@latest add input
 PS C:\react\shadcn-field-component> npx shadcn@latest add button
 PS C:\react\shadcn-field-component> npx shadcn@latest add sonner
+PS C:\react\shadcn-field-component> npx shadcn@latest add textarea
+
