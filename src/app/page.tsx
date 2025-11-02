@@ -23,6 +23,7 @@ export default function Home() {
     defaultValues: {
       name: '',
       description: '',
+      status: 'draft' as const,
     },
     resolver: zodResolver(projectSchema),
   });
@@ -51,6 +52,24 @@ export default function Home() {
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                <Input
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+
+          <Controller
+            control={form.control}
+            name='status'
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>Status</FieldLabel>
                 <Input
                   {...field}
                   id={field.name}
