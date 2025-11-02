@@ -29,3 +29,4 @@ PS C:\react\shadcn-field-component> npx shadcn@latest add field
 
 PS C:\react\shadcn-field-component> npx shadcn@latest add input
 PS C:\react\shadcn-field-component> npx shadcn@latest add button
+PS C:\react\shadcn-field-component> npx shadcn@latest add sonner
