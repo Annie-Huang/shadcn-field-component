@@ -33,4 +33,6 @@ PS C:\react\shadcn-field-component> npx shadcn@latest add input
 PS C:\react\shadcn-field-component> npx shadcn@latest add button
 PS C:\react\shadcn-field-component> npx shadcn@latest add sonner
 PS C:\react\shadcn-field-component> npx shadcn@latest add textarea
+PS C:\react\shadcn-field-component> npx shadcn@latest add select
+
 
