@@ -74,10 +74,11 @@ export default function Home() {
           <Controller
             control={form.control}
             name='status'
-            render={({ field, fieldState }) => (
+            // if you hover ...field below, you will see it only contain onBlur, value, disabled, name, ref
+            render={({ field: { onChange, ...field }, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>Status</FieldLabel>
-                <Select>
+                <Select {...field} onValueChange={onChange}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
