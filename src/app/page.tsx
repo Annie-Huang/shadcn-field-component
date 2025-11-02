@@ -14,11 +14,13 @@ import {
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
     defaultValues: {
       name: '',
+      description: '',
     },
     resolver: zodResolver(projectSchema),
   });
@@ -58,6 +60,25 @@ export default function Home() {
               </Field>
             )}
           />
+
+          <Controller
+            control={form.control}
+            name='description'
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                <Textarea
+                  {...field}
+                  id={field.name}
+                  aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+                />
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+
           <Button>Create</Button>
         </FieldGroup>
       </form>
