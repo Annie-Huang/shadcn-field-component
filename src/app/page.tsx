@@ -75,11 +75,15 @@ export default function Home() {
             control={form.control}
             name='status'
             // if you hover ...field below, you will see it only contain onBlur, value, disabled, name, ref
-            render={({ field: { onChange, ...field }, fieldState }) => (
+            render={({ field: { onChange, onBlur, ...field }, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>Status</FieldLabel>
                 <Select {...field} onValueChange={onChange}>
-                  <SelectTrigger>
+                  <SelectTrigger
+                    aria-invalid={fieldState.invalid}
+                    onBlur={onBlur}
+                    id={field.name}
+                  >
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>

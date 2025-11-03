@@ -9,6 +9,7 @@ https://ui.shadcn.com/docs/components/input
 https://ui.shadcn.com/docs/components/button
 https://ui.shadcn.com/docs/components/sonner
 https://ui.shadcn.com/docs/components/textarea
+https://ui.shadcn.com/docs/components/select
 
 -------------------------------------------------------------------
 
