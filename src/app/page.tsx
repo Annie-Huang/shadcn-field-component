@@ -143,8 +143,10 @@ export default function Home() {
                   field: { value, onChange, ...field },
                   fieldState,
                 }) => (
-                  <Field data-invalid={fieldState.invalid}>
-                    <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                  <Field
+                    data-invalid={fieldState.invalid}
+                    orientation='horizontal'
+                  >
                     <Checkbox
                       {...field}
                       id={field.name}
@@ -152,6 +154,7 @@ export default function Home() {
                       onCheckedChange={onChange}
                       aria-invalid={fieldState.invalid}
                     />
+                    <FieldLabel htmlFor={field.name}>Email</FieldLabel>
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
                     )}
