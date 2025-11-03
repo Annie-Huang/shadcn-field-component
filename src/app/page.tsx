@@ -26,6 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
@@ -133,6 +134,22 @@ export default function Home() {
                 Select how you would like to receive notifications
               </FieldDescription>
             </FieldContent>
+
+            <FieldGroup data-slot='checkbox-group'>
+              <Controller
+                control={form.control}
+                name='notifications.email'
+                render={({ field, fieldState }) => (
+                  <Field data-invalid={fieldState.invalid}>
+                    <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                    <Checkbox />
+                    {fieldState.invalid && (
+                      <FieldError errors={[fieldState.error]} />
+                    )}
+                  </Field>
+                )}
+              />
+            </FieldGroup>
           </FieldSet>
 
           <Button>Create</Button>
