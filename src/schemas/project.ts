@@ -9,4 +9,9 @@ export const projectSchema = z.object({
     .string()
     .transform((v) => v || undefined)
     .optional(), // Add optional otherwise the page.tsx will not pass typescript as here only state the value can be string only.
+  notifications: z.object({
+    email: z.boolean(),
+    sms: z.boolean(),
+    push: z.boolean(),
+  }),
 });
