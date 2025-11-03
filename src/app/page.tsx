@@ -163,6 +163,62 @@ export default function Home() {
                   </Field>
                 )}
               />
+
+              <Controller
+                control={form.control}
+                name='notifications.sms'
+                render={({
+                  field: { value, onChange, ...field },
+                  fieldState,
+                }) => (
+                  <Field
+                    data-invalid={fieldState.invalid}
+                    orientation='horizontal'
+                  >
+                    <Checkbox
+                      {...field}
+                      id={field.name}
+                      checked={value}
+                      onCheckedChange={onChange}
+                      aria-invalid={fieldState.invalid}
+                    />
+                    <FieldContent>
+                      <FieldLabel htmlFor={field.name}>Text</FieldLabel>
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </FieldContent>
+                  </Field>
+                )}
+              />
+
+              <Controller
+                control={form.control}
+                name='notifications.push'
+                render={({
+                  field: { value, onChange, ...field },
+                  fieldState,
+                }) => (
+                  <Field
+                    data-invalid={fieldState.invalid}
+                    orientation='horizontal'
+                  >
+                    <Checkbox
+                      {...field}
+                      id={field.name}
+                      checked={value}
+                      onCheckedChange={onChange}
+                      aria-invalid={fieldState.invalid}
+                    />
+                    <FieldContent>
+                      <FieldLabel htmlFor={field.name}>In App</FieldLabel>
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </FieldContent>
+                  </Field>
+                )}
+              />
             </FieldGroup>
           </FieldSet>
 
