@@ -13,6 +13,8 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
+  FieldLegend,
+  FieldSet,
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -123,6 +125,15 @@ export default function Home() {
               </Field>
             )}
           />
+
+          <FieldSet>
+            <FieldContent>
+              <FieldLegend>Notifications</FieldLegend>
+              <FieldDescription>
+                Select how you would like to receive notifications
+              </FieldDescription>
+            </FieldContent>
+          </FieldSet>
 
           <Button>Create</Button>
         </FieldGroup>
