@@ -47,7 +47,7 @@ export default function Home() {
 
   const {
     fields: users,
-    append: adduser,
+    append: addUser,
     remove: removeUser,
   } = useFieldArray({ control: form.control, name: 'users' });
 
@@ -238,7 +238,7 @@ export default function Home() {
           <FieldSeparator />
 
           <FieldSet>
-            <div>
+            <div className='flex justify-between gap-2 items-center'>
               <FieldContent>
                 <FieldLegend variant='label' className='mb-0'>
                   User Email Address
@@ -250,6 +250,15 @@ export default function Home() {
                   <FieldError errors={[form.formState.errors.users?.root]} />
                 )}
               </FieldContent>
+
+              <Button
+                type='button'
+                variant='outline'
+                size='sm'
+                onClick={() => addUser({ email: '' })}
+              >
+                Add User
+              </Button>
             </div>
           </FieldSet>
 
