@@ -34,6 +34,11 @@ export default function Home() {
       name: '',
       description: '',
       status: 'draft' as const,
+      notifications: {
+        email: false,
+        sms: false,
+        push: false,
+      },
     },
     resolver: zodResolver(projectSchema),
   });
