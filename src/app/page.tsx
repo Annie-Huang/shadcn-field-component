@@ -14,6 +14,7 @@ import {
   FieldGroup,
   FieldLabel,
   FieldLegend,
+  FieldSeparator,
   FieldSet,
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
@@ -232,6 +233,21 @@ export default function Home() {
                 )}
               />
             </FieldGroup>
+          </FieldSet>
+
+          <FieldSeparator />
+
+          <FieldSet>
+            <div>
+              <FieldContent>
+                <FieldLegend variant='label' className='mb-0'>
+                  User Email Address
+                </FieldLegend>
+                <FieldDescription>
+                  Add up to 5 users to this project (including yourself).
+                </FieldDescription>
+              </FieldContent>
+            </div>
           </FieldSet>
 
           <Button>Create</Button>
