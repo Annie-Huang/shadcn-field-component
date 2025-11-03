@@ -139,10 +139,19 @@ export default function Home() {
               <Controller
                 control={form.control}
                 name='notifications.email'
-                render={({ field, fieldState }) => (
+                render={({
+                  field: { value, onChange, ...field },
+                  fieldState,
+                }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-                    <Checkbox />
+                    <Checkbox
+                      {...field}
+                      id={field.name}
+                      checked={value}
+                      onCheckedChange={onChange}
+                      aria-invalid={fieldState.invalid}
+                    />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
                     )}
