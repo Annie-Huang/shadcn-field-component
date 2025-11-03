@@ -1,6 +1,6 @@
 'use client';
 
-import { Controller, useForm } from 'react-hook-form';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import z from 'zod';
 import { PROJECT_STATUSES, projectSchema } from '@/schemas/project';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -39,9 +39,16 @@ export default function Home() {
         sms: false,
         push: false,
       },
+      users: [{ email: '' }],
     },
     resolver: zodResolver(projectSchema),
   });
+
+  const {
+    fields: users,
+    append: adduser,
+    remove: removeUser,
+  } = useFieldArray({ control: form.control, name: 'users' });
 
   const onSubmit = async (data: z.infer<typeof projectSchema>) => {
     const res = await createProject(data);
