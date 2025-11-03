@@ -154,10 +154,12 @@ export default function Home() {
                       onCheckedChange={onChange}
                       aria-invalid={fieldState.invalid}
                     />
-                    <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
+                    <FieldContent>
+                      <FieldLabel htmlFor={field.name}>Email</FieldLabel>
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </FieldContent>
                   </Field>
                 )}
               />
