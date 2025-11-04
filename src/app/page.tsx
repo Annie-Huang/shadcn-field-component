@@ -290,6 +290,7 @@ export default function Home() {
                             variant='ghost'
                             size='icon-xs'
                             onClick={() => removeUser(index)}
+                            aria-label={`Remove user ${index + 1}`}
                           >
                             <XIcon />
                           </InputGroupButton>
