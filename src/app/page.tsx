@@ -260,6 +260,28 @@ export default function Home() {
                 Add User
               </Button>
             </div>
+
+            <FieldGroup>
+              {users.map((user, index) => (
+                <Controller
+                  key={user.id}
+                  control={form.control}
+                  name={`users.${index}.email`}
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <Input
+                        {...field}
+                        id={field.name}
+                        aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+                      />
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </Field>
+                  )}
+                />
+              ))}
+            </FieldGroup>
           </FieldSet>
 
           <Button>Create</Button>
