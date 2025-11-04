@@ -11,6 +11,7 @@ https://ui.shadcn.com/docs/components/sonner
 https://ui.shadcn.com/docs/components/textarea
 https://ui.shadcn.com/docs/components/select
 https://ui.shadcn.com/docs/components/checkbox
+https://ui.shadcn.com/docs/components/input-group
 
 -------------------------------------------------------------------
 
@@ -37,4 +38,4 @@ PS C:\react\shadcn-field-component> npx shadcn@latest add sonner
 PS C:\react\shadcn-field-component> npx shadcn@latest add textarea
 PS C:\react\shadcn-field-component> npx shadcn@latest add select
 PS C:\react\shadcn-field-component> npx shadcn@latest add checkbox
-
+PS C:\react\shadcn-field-component> npx shadcn@latest add input-group
