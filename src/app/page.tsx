@@ -28,7 +28,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { InputGroup, InputGroupInput } from '@/components/ui/input-group';
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from '@/components/ui/input-group';
+import { XIcon } from 'lucide-react';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
@@ -278,6 +284,16 @@ export default function Home() {
                           aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
                           aria-label={`User ${index + 1} email`}
                         />
+                        <InputGroupAddon align='inline-end'>
+                          <InputGroupButton
+                            type='button'
+                            variant='ghost'
+                            size='icon-xs'
+                            onClick={() => removeUser(index)}
+                          >
+                            <XIcon />
+                          </InputGroupButton>
+                        </InputGroupAddon>
                       </InputGroup>
 
                       {fieldState.invalid && (
