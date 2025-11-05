@@ -19,7 +19,17 @@ type FormControlProps<
   control: ControllerProps<TFieldValues, TName, TTransformedValues>['control'];
 };
 
-export const FormInput = ({ control, name, label }: FormControlProps) => {
+// export const FormInput = ({ control, name, label }: FormControlProps) => {
+
+export function FormInput<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+>({
+  control,
+  name,
+  label,
+}: FormControlProps<TFieldValues, TName, TTransformedValues>) {
   return (
     <Controller
       control={control}
@@ -37,4 +47,4 @@ export const FormInput = ({ control, name, label }: FormControlProps) => {
       )}
     />
   );
-};
+}
