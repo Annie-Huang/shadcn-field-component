@@ -14,10 +14,10 @@ type FormControlProps<
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TTransformedValues = TFieldValues,
 > = {
-  control: ControllerProps<TFieldValues, TName, TTransformedValues>;
+  control: ControllerProps<TFieldValues, TName, TTransformedValues>['control'];
 };
 
-export const FormInput = () => {
+export const FormInput = ({ control }: FormControlProps) => {
   return (
     <Controller
       control={control}
