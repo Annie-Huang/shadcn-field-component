@@ -35,6 +35,7 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 import { XIcon } from 'lucide-react';
+import { FormInput } from '@/components/form';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
@@ -76,23 +77,7 @@ export default function Home() {
     <div className='container px-4 mx-auto my-6'>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <FieldGroup>
-          <Controller
-            control={form.control}
-            name='name'
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>Name</FieldLabel>
-                <Input
-                  {...field}
-                  id={field.name}
-                  aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
+          <FormInput control={form.control} name='name' label='Name' />
 
           <Controller
             control={form.control}
