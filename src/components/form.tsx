@@ -19,8 +19,23 @@ type FormControlProps<
   control: ControllerProps<TFieldValues, TName, TTransformedValues>['control'];
 };
 
-// export const FormInput = ({ control, name, label }: FormControlProps) => {
+function FormBase() {
+  return (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field, fieldState }) => (
+        <Field data-invalid={fieldState.invalid}>
+          <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+          {children}
+          {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+        </Field>
+      )}
+    />
+  );
+}
 
+// export const FormInput = ({ control, name, label }: FormControlProps) => {
 export function FormInput<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
