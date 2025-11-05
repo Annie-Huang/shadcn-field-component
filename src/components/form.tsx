@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   Controller,
   ControllerProps,
@@ -14,17 +14,19 @@ type FormControlProps<
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TTransformedValues = TFieldValues,
 > = {
+  name: TName;
+  label: ReactNode;
   control: ControllerProps<TFieldValues, TName, TTransformedValues>['control'];
 };
 
-export const FormInput = ({ control }: FormControlProps) => {
+export const FormInput = ({ control, name, label }: FormControlProps) => {
   return (
     <Controller
       control={control}
-      name='name'
+      name={name}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+          <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
           <Input
             {...field}
             id={field.name}
