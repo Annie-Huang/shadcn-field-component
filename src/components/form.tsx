@@ -1,10 +1,20 @@
 import React from 'react';
-import { Controller, ControllerProps } from 'react-hook-form';
+import {
+  Controller,
+  ControllerProps,
+  FieldPath,
+  FieldValues,
+} from 'react-hook-form';
 import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 
-type FormControlProps<> = {
-  control: ControllerProps;
+// Copy from C:\react\shadcn-field-component\node_modules\react-hook-form\dist\types\controller.d.ts
+type FormControlProps<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+> = {
+  control: ControllerProps<TFieldValues, TName, TTransformedValues>;
 };
 
 export const FormInput = () => {
