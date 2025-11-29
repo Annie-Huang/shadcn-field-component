@@ -7,6 +7,7 @@ import {
 } from 'react-hook-form';
 import {
   Field,
+  FieldContent,
   FieldDescription,
   FieldError,
   FieldLabel,
@@ -102,8 +103,10 @@ function FormBase<
       name={name}
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
-          <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-          {description && <FieldDescription>{description}</FieldDescription>}
+          <FieldContent>
+            <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+            {description && <FieldDescription>{description}</FieldDescription>}
+          </FieldContent>
           {children({
             ...field,
             id: field.name,
