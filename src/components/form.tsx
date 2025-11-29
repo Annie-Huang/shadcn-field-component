@@ -31,7 +31,16 @@ type FormBaseProps<
   ) => ReactNode;
 };
 
-function FormBase() {
+function FormBase<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+>({
+  children,
+  control,
+  label,
+  name,
+}: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
   return (
     <Controller
       control={control}
@@ -39,7 +48,7 @@ function FormBase() {
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
           <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-          {children}
+          {children(field)}
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>
       )}
