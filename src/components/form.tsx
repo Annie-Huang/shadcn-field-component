@@ -13,6 +13,13 @@ import {
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 
 // Copy from C:\react\shadcn-field-component\node_modules\react-hook-form\dist\types\controller.d.ts
 type FormControlProps<
@@ -174,4 +181,36 @@ export const FormInput: FormControlFunc = (props) => {
 
 export const FormTextarea: FormControlFunc = (props) => {
   return <FormBase {...props}>{(field) => <Textarea {...field} />}</FormBase>;
+};
+
+export const FormSelect: FormControlFunc<{ children: ReactNode }> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <FormBase {...props}>
+      {({ onChange, onBlur, ...field }) => (
+        <Select {...field} onValueChange={onChange}>
+          <SelectTrigger
+            aria-invalid={field['aria-invalid']}
+            id={field.id}
+            onBlur={onBlur}
+          >
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>{children}</SelectContent>
+        </Select>
+      )}
+    </FormBase>
+  );
+};
+
+export const FormCheckbox: FormControlFunc = (props) => {
+  return (
+    <FormBase {...props} horizontal controlFirst>
+      {({ onChange, value, ...field }) => (
+        <Checkbox {...field} checked={value} onCheckedChange={onChange} />
+      )}
+    </FormBase>
+  );
 };
