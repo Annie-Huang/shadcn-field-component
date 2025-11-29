@@ -39,6 +39,8 @@ type FormBaseProps<
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TTransformedValues = TFieldValues,
 > = FormControlProps<TFieldValues, TName, TTransformedValues> & {
+  horizontal?: boolean;
+  controlFirst?: boolean;
   children: (
     field: Parameters<
       ControllerProps<TFieldValues, TName, TTransformedValues>['render']
