@@ -71,6 +71,8 @@ function FormBase<
   );
 }
 
+// -----------------------------------------------------------------------------------------------------
+
 // export const FormInput = ({ control, name, label }: FormControlProps) => {
 /*export function FormInput<
   TFieldValues extends FieldValues = FieldValues,
@@ -120,10 +122,14 @@ function FormBase<
 //   );
 // }
 
-export function FormInput<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues,
->(props: FormControlProps<TFieldValues, TName, TTransformedValues>) {
+// export function FormInput<
+//   TFieldValues extends FieldValues = FieldValues,
+//   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+//   TTransformedValues = TFieldValues,
+// >(props: FormControlProps<TFieldValues, TName, TTransformedValues>) {
+//   return <FormBase {...props}>{(field) => <Input {...field} />}</FormBase>;
+// }
+
+export const FormInput: FormControlFunc = (props) => {
   return <FormBase {...props}>{(field) => <Input {...field} />}</FormBase>;
-}
+};
