@@ -51,7 +51,11 @@ function FormBase<
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
           <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-          {children(field)}
+          {children({
+            ...field,
+            id: field.name,
+            'aria-invalid': fieldState.invalid,
+          })}
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>
       )}
