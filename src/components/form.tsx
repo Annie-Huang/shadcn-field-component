@@ -27,7 +27,10 @@ type FormBaseProps<
   children: (
     field: Parameters<
       ControllerProps<TFieldValues, TName, TTransformedValues>['render']
-    >[0]['field'],
+    >[0]['field'] & {
+      'aria-invalid': boolean;
+      id: string;
+    },
   ) => ReactNode;
 };
 
