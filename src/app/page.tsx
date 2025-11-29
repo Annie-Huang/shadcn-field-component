@@ -35,7 +35,7 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 import { XIcon } from 'lucide-react';
-import { FormInput, FormTextarea } from '@/components/form';
+import { FormInput, FormSelect, FormTextarea } from '@/components/form';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
@@ -79,35 +79,13 @@ export default function Home() {
         <FieldGroup>
           <FormInput control={form.control} name='name' label='Name' />
 
-          <Controller
-            control={form.control}
-            name='status'
-            // if you hover ...field below, you will see it only contain onBlur, value, disabled, name, ref
-            render={({ field: { onChange, onBlur, ...field }, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldLabel htmlFor={field.name}>Status</FieldLabel>
-                <Select {...field} onValueChange={onChange}>
-                  <SelectTrigger
-                    aria-invalid={fieldState.invalid}
-                    onBlur={onBlur}
-                    id={field.name}
-                  >
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {PROJECT_STATUSES.map((status) => (
-                      <SelectItem key={status} value={status}>
-                        {status}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
-          />
+          <FormSelect control={form.control} name='status' label='Status'>
+            {PROJECT_STATUSES.map((status) => (
+              <SelectItem key={status} value={status}>
+                {status}
+              </SelectItem>
+            ))}
+          </FormSelect>
 
           <FormTextarea
             control={form.control}
