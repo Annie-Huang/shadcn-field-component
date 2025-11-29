@@ -109,13 +109,18 @@ function FormBase<
   label,
   name,
   description,
+  controlFirst,
+  horizontal,
 }: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
   return (
     <Controller
       control={control}
       name={name}
       render={({ field, fieldState }) => (
-        <Field data-invalid={fieldState.invalid}>
+        <Field
+          data-invalid={fieldState.invalid}
+          orientation={horizontal ? 'horizontal' : undefined}
+        >
           <FieldContent>
             <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
             {description && <FieldDescription>{description}</FieldDescription>}
