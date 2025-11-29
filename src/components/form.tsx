@@ -19,6 +19,18 @@ type FormControlProps<
   control: ControllerProps<TFieldValues, TName, TTransformedValues>['control'];
 };
 
+type FormBaseProps<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+> = FormControlProps<TFieldValues, TName, TTransformedValues> & {
+  children: (
+    field: Parameters<
+      ControllerProps<TFieldValues, TName, TTransformedValues>['render']
+    >[0]['field'],
+  ) => ReactNode;
+};
+
 function FormBase() {
   return (
     <Controller
