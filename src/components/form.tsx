@@ -92,22 +92,30 @@ function FormBase<
   );
 }*/
 
+// export function FormInput<
+//   TFieldValues extends FieldValues = FieldValues,
+//   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+//   TTransformedValues = TFieldValues,
+// >({
+//   control,
+//   name,
+//   label,
+// }: FormControlProps<TFieldValues, TName, TTransformedValues>) {
+//   return (
+//     <FormBase>
+//       <Input
+//         {...field}
+//         id={field.name}
+//         aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+//       />
+//     </FormBase>
+//   );
+// }
+
 export function FormInput<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TTransformedValues = TFieldValues,
->({
-  control,
-  name,
-  label,
-}: FormControlProps<TFieldValues, TName, TTransformedValues>) {
-  return (
-    <FormBase>
-      <Input
-        {...field}
-        id={field.name}
-        aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
-      />
-    </FormBase>
-  );
+>(props: FormControlProps<TFieldValues, TName, TTransformedValues>) {
+  return <FormBase {...props}>{(field) => <Input {...field} />}</FormBase>;
 }
