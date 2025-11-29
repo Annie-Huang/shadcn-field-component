@@ -64,7 +64,7 @@ function FormBase<
 }
 
 // export const FormInput = ({ control, name, label }: FormControlProps) => {
-export function FormInput<
+/*export function FormInput<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TTransformedValues = TFieldValues,
@@ -89,5 +89,25 @@ export function FormInput<
         </Field>
       )}
     />
+  );
+}*/
+
+export function FormInput<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+>({
+  control,
+  name,
+  label,
+}: FormControlProps<TFieldValues, TName, TTransformedValues>) {
+  return (
+    <FormBase>
+      <Input
+        {...field}
+        id={field.name}
+        aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+      />
+    </FormBase>
   );
 }
