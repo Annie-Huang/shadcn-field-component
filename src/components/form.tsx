@@ -133,3 +133,7 @@ function FormBase<
 export const FormInput: FormControlFunc = (props) => {
   return <FormBase {...props}>{(field) => <Input {...field} />}</FormBase>;
 };
+
+export const FormTextarea: FormControlFunc = (props) => {
+  return <FormBase {...props}>{(field) => <Textarea {...field} />}</FormBase>;
+};
