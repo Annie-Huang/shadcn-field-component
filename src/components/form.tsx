@@ -34,6 +34,14 @@ type FormBaseProps<
   ) => ReactNode;
 };
 
+type FormControlFunc = <
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+>(
+  props: FormControlProps<TFieldValues, TName, TTransformedValues>,
+) => ReactNode;
+
 function FormBase<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
