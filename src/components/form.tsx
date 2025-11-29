@@ -99,7 +99,7 @@ type FormControlFunc<
 //   );
 // }
 
-function FormBase<
+/*function FormBase<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
   TTransformedValues = TFieldValues,
@@ -133,6 +133,50 @@ function FormBase<
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>
       )}
+    />
+  );
+}*/
+
+function FormBase<
+  TFieldValues extends FieldValues = FieldValues,
+  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+  TTransformedValues = TFieldValues,
+>({
+  children,
+  control,
+  label,
+  name,
+  description,
+  controlFirst,
+  horizontal,
+}: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
+  return (
+    <Controller
+      control={control}
+      name={name}
+      render={({ field, fieldState }) => {
+        const labelElement = (
+          <FieldContent>
+            <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+            {description && <FieldDescription>{description}</FieldDescription>}
+          </FieldContent>
+        );
+
+        return (
+          <Field
+            data-invalid={fieldState.invalid}
+            orientation={horizontal ? 'horizontal' : undefined}
+          >
+            {labelElement}
+            {children({
+              ...field,
+              id: field.name,
+              'aria-invalid': fieldState.invalid,
+            })}
+            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+          </Field>
+        );
+      }}
     />
   );
 }
