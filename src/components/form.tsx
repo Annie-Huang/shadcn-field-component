@@ -5,7 +5,12 @@ import {
   FieldPath,
   FieldValues,
 } from 'react-hook-form';
-import { Field, FieldError, FieldLabel } from '@/components/ui/field';
+import {
+  Field,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
@@ -17,6 +22,7 @@ type FormControlProps<
 > = {
   name: TName;
   label: ReactNode;
+  description?: ReactNode;
   control: ControllerProps<TFieldValues, TName, TTransformedValues>['control'];
 };
 
@@ -43,6 +49,35 @@ type FormControlFunc = <
   props: FormControlProps<TFieldValues, TName, TTransformedValues>,
 ) => ReactNode;
 
+// function FormBase<
+//   TFieldValues extends FieldValues = FieldValues,
+//   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+//   TTransformedValues = TFieldValues,
+// >({
+//   children,
+//   control,
+//   label,
+//   name,
+// }: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
+//   return (
+//     <Controller
+//       control={control}
+//       name={name}
+//       render={({ field, fieldState }) => (
+//         <Field data-invalid={fieldState.invalid}>
+//           <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+//           {children({
+//             ...field,
+//             id: field.name,
+//             'aria-invalid': fieldState.invalid,
+//           })}
+//           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+//         </Field>
+//       )}
+//     />
+//   );
+// }
+
 function FormBase<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
@@ -52,6 +87,7 @@ function FormBase<
   control,
   label,
   name,
+  description,
 }: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
   return (
     <Controller
@@ -60,6 +96,7 @@ function FormBase<
       render={({ field, fieldState }) => (
         <Field data-invalid={fieldState.invalid}>
           <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+          {description && <FieldDescription>{description}</FieldDescription>}
           {children({
             ...field,
             id: field.name,
