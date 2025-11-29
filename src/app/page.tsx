@@ -35,7 +35,7 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 import { XIcon } from 'lucide-react';
-import { FormInput } from '@/components/form';
+import { FormInput, FormTextarea } from '@/components/form';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
@@ -109,27 +109,11 @@ export default function Home() {
             )}
           />
 
-          <Controller
+          <FormTextarea
             control={form.control}
             name='description'
-            render={({ field, fieldState }) => (
-              <Field data-invalid={fieldState.invalid}>
-                <FieldContent>
-                  <FieldLabel htmlFor={field.name}>Description</FieldLabel>
-                  <FieldDescription>
-                    Be as specific as possible
-                  </FieldDescription>
-                </FieldContent>
-                <Textarea
-                  {...field}
-                  id={field.name}
-                  aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
-                />
-                {fieldState.invalid && (
-                  <FieldError errors={[fieldState.error]} />
-                )}
-              </Field>
-            )}
+            label='Description'
+            description='Be as detailed as possible'
           />
 
           <FieldSet>

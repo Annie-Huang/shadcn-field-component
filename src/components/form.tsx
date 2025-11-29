@@ -7,6 +7,7 @@ import {
 } from 'react-hook-form';
 import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 // Copy from C:\react\shadcn-field-component\node_modules\react-hook-form\dist\types\controller.d.ts
 type FormControlProps<
