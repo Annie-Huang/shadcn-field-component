@@ -35,7 +35,12 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 import { XIcon } from 'lucide-react';
-import { FormInput, FormSelect, FormTextarea } from '@/components/form';
+import {
+  FormCheckbox,
+  FormInput,
+  FormSelect,
+  FormTextarea,
+} from '@/components/form';
 
 export default function Home() {
   const form = useForm<z.infer<typeof projectSchema>>({
@@ -103,88 +108,20 @@ export default function Home() {
             </FieldContent>
 
             <FieldGroup data-slot='checkbox-group'>
-              <Controller
-                control={form.control}
+              <FormCheckbox
                 name='notifications.email'
-                render={({
-                  field: { value, onChange, ...field },
-                  fieldState,
-                }) => (
-                  <Field
-                    data-invalid={fieldState.invalid}
-                    orientation='horizontal'
-                  >
-                    <Checkbox
-                      {...field}
-                      id={field.name}
-                      checked={value}
-                      onCheckedChange={onChange}
-                      aria-invalid={fieldState.invalid}
-                    />
-                    <FieldContent>
-                      <FieldLabel htmlFor={field.name}>Email</FieldLabel>
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </FieldContent>
-                  </Field>
-                )}
-              />
-
-              <Controller
+                label='Email'
                 control={form.control}
+              />
+              <FormCheckbox
                 name='notifications.sms'
-                render={({
-                  field: { value, onChange, ...field },
-                  fieldState,
-                }) => (
-                  <Field
-                    data-invalid={fieldState.invalid}
-                    orientation='horizontal'
-                  >
-                    <Checkbox
-                      {...field}
-                      id={field.name}
-                      checked={value}
-                      onCheckedChange={onChange}
-                      aria-invalid={fieldState.invalid}
-                    />
-                    <FieldContent>
-                      <FieldLabel htmlFor={field.name}>Text</FieldLabel>
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </FieldContent>
-                  </Field>
-                )}
-              />
-
-              <Controller
+                label='Text'
                 control={form.control}
+              />
+              <FormCheckbox
                 name='notifications.push'
-                render={({
-                  field: { value, onChange, ...field },
-                  fieldState,
-                }) => (
-                  <Field
-                    data-invalid={fieldState.invalid}
-                    orientation='horizontal'
-                  >
-                    <Checkbox
-                      {...field}
-                      id={field.name}
-                      checked={value}
-                      onCheckedChange={onChange}
-                      aria-invalid={fieldState.invalid}
-                    />
-                    <FieldContent>
-                      <FieldLabel htmlFor={field.name}>In App</FieldLabel>
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </FieldContent>
-                  </Field>
-                )}
+                label='In App'
+                control={form.control}
               />
             </FieldGroup>
           </FieldSet>
