@@ -183,12 +183,16 @@ function FormBase<
             {controlFirst ? (
               <>
                 {control}
-                <FieldContent>{labelElement}</FieldContent>
+                <FieldContent>
+                  {labelElement}
+                  {errorElem}
+                </FieldContent>
               </>
             ) : (
               <>
                 <FieldContent>{labelElement}</FieldContent>
                 {control}
+                {errorElem}
               </>
             )}
 
