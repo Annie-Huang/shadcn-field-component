@@ -195,8 +195,6 @@ function FormBase<
                 {errorElem}
               </>
             )}
-
-            {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         );
       }}
