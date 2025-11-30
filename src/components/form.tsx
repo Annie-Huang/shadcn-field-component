@@ -173,8 +173,21 @@ function FormBase<
             data-invalid={fieldState.invalid}
             orientation={horizontal ? 'horizontal' : undefined}
           >
-            {labelElement}
-            {control}
+            {/*{labelElement}*/}
+            {/*{control}*/}
+
+            {controlFirst ? (
+              <>
+                {control}
+                {labelElement}
+              </>
+            ) : (
+              <>
+                {labelElement}
+                {control}
+              </>
+            )}
+
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         );
