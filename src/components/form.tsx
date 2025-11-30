@@ -162,17 +162,19 @@ function FormBase<
           </FieldContent>
         );
 
+        const control = children({
+          ...field,
+          id: field.name,
+          'aria-invalid': fieldState.invalid,
+        });
+
         return (
           <Field
             data-invalid={fieldState.invalid}
             orientation={horizontal ? 'horizontal' : undefined}
           >
             {labelElement}
-            {children({
-              ...field,
-              id: field.name,
-              'aria-invalid': fieldState.invalid,
-            })}
+            {control}
             {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
           </Field>
         );
