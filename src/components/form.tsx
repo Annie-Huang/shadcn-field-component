@@ -156,10 +156,10 @@ function FormBase<
       name={name}
       render={({ field, fieldState }) => {
         const labelElement = (
-          <FieldContent>
+          <>
             <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
             {description && <FieldDescription>{description}</FieldDescription>}
-          </FieldContent>
+          </>
         );
 
         const control = children({
@@ -183,11 +183,11 @@ function FormBase<
             {controlFirst ? (
               <>
                 {control}
-                {labelElement}
+                <FieldContent>{labelElement}</FieldContent>
               </>
             ) : (
               <>
-                {labelElement}
+                <FieldContent>{labelElement}</FieldContent>
                 {control}
               </>
             )}
