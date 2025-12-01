@@ -1,6 +1,6 @@
 'use client';
 
-import { Controller, useFieldArray, useForm } from 'react-hook-form';
+// import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import z from 'zod';
 import { PROJECT_STATUSES, projectSchema } from '@/schemas/project';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -12,22 +12,12 @@ import {
   FieldDescription,
   FieldError,
   FieldGroup,
-  FieldLabel,
   FieldLegend,
   FieldSeparator,
   FieldSet,
 } from '@/components/ui/field';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
+import { SelectItem } from '@/components/ui/select';
 import {
   InputGroup,
   InputGroupAddon,
