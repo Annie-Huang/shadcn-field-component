@@ -34,6 +34,8 @@ import {
 
 import { useForm } from '@tanstack/react-form';
 
+type FormData = z.infer<typeof projectSchema>;
+
 export default function Home() {
   const form = useForm({
     defaultValues: {
@@ -46,7 +48,7 @@ export default function Home() {
         push: false,
       },
       users: [{ email: '' }],
-    },
+    } satisfies FormData as FormData,
     validators: {
       onSubmit: projectSchema,
     },
