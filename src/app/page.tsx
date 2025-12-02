@@ -32,8 +32,10 @@ import {
   FormTextarea,
 } from '@/components/form';
 
+import { useForm } from '@tanstack/react-form';
+
 export default function Home() {
-  const form = useForm<z.infer<typeof projectSchema>>({
+  const form = useForm({
     defaultValues: {
       name: '',
       description: '',
@@ -45,7 +47,9 @@ export default function Home() {
       },
       users: [{ email: '' }],
     },
-    resolver: zodResolver(projectSchema),
+    validators: {
+      onSubmit: projectSchema,
+    },
   });
 
   const {
