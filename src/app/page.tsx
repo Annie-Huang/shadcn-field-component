@@ -52,6 +52,19 @@ export default function Home() {
     validators: {
       onSubmit: projectSchema,
     },
+    onSubmit: async ({ value }) => {
+      const res = await createProject(value);
+
+      if (res.success) {
+        form.reset();
+        toast.success('Project created successfully!', {
+          description: JSON.stringify(value, null, 2),
+          className: 'whitespace-pre-wrap font-mono',
+        });
+      } else {
+        toast.error('Failed to create project.');
+      }
+    },
   });
 
   const {
@@ -59,20 +72,6 @@ export default function Home() {
     append: addUser,
     remove: removeUser,
   } = useFieldArray({ control: form.control, name: 'users' });
-
-  const onSubmit = async (data: z.infer<typeof projectSchema>) => {
-    const res = await createProject(data);
-
-    if (res.success) {
-      form.reset();
-      toast.success('Project created successfully!', {
-        description: JSON.stringify(data, null, 2),
-        className: 'whitespace-pre-wrap font-mono',
-      });
-    } else {
-      toast.error('Failed to create project.');
-    }
-  };
 
   return (
     <div className='container px-4 mx-auto my-6'>
