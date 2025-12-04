@@ -84,7 +84,6 @@ export default function Home() {
         }}
       >
         <FieldGroup>
-          {/*<FormInput control={form.control} name='name' label='Name' />*/}
           <form.Field name='name'>
             {(field) => {
               const isInvalid =
