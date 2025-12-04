@@ -6,7 +6,18 @@ import {
   FieldError,
   FieldLabel,
 } from '@/components/ui/field';
-import React from 'react';
+import React, { ReactNode } from 'react';
+
+export type FormControlProps = {
+  label: string;
+  description?: string;
+};
+
+type FormBaseProps = FormControlProps & {
+  children: ReactNode;
+  horizontal?: boolean;
+  controlFirst?: boolean;
+};
 
 export function FormBase({
   children,
