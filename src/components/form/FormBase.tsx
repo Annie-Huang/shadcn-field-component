@@ -8,19 +8,13 @@ import {
 } from '@/components/ui/field';
 import React from 'react';
 
-function FormBase<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-  TTransformedValues = TFieldValues,
->({
+export function FormBase({
   children,
-  control,
   label,
-  name,
   description,
   controlFirst,
   horizontal,
-}: FormBaseProps<TFieldValues, TName, TTransformedValues>) {
+}: FormBaseProps) {
   return (
     <Controller
       control={control}
