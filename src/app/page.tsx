@@ -35,11 +35,12 @@ import {
 
 import { useForm } from '@tanstack/react-form';
 import { Input } from '@/components/ui/input';
+import { useAppForm } from '@/components/form/hooks';
 
 type FormData = z.infer<typeof projectSchema>;
 
 export default function Home() {
-  const form = useForm({
+  const form = useAppForm({
     defaultValues: {
       name: '',
       description: '',
@@ -84,7 +85,7 @@ export default function Home() {
         }}
       >
         <FieldGroup>
-          <form.Field name='name'>
+          <form.AppField name='name'>
             {(field) => {
               const isInvalid =
                 field.state.meta.isTouched && !field.state.meta.isValid;
@@ -104,7 +105,7 @@ export default function Home() {
                 </Field>
               );
             }}
-          </form.Field>
+          </form.AppField>
 
           <FormSelect control={form.control} name='status' label='Status'>
             {PROJECT_STATUSES.map((status) => (
