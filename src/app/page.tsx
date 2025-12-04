@@ -34,6 +34,7 @@ import {
 } from '@/components/form';
 
 import { useForm } from '@tanstack/react-form';
+import { Input } from '@/components/ui/input';
 
 type FormData = z.infer<typeof projectSchema>;
 
@@ -68,11 +69,11 @@ export default function Home() {
     },
   });
 
-  const {
-    fields: users,
-    append: addUser,
-    remove: removeUser,
-  } = useFieldArray({ control: form.control, name: 'users' });
+  // const {
+  //   fields: users,
+  //   append: addUser,
+  //   remove: removeUser,
+  // } = useFieldArray({ control: form.control, name: 'users' });
 
   return (
     <div className='container px-4 mx-auto my-6'>
@@ -92,6 +93,15 @@ export default function Home() {
               return (
                 <Field data-invalid={isInvalid}>
                   <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                  <Input
+                    id={field.name}
+                    name={field.name}
+                    value={field.state.value}
+                    onBlur={field.handleBlur}
+                    onChange={(e) => field.handleChange(e.target.value)}
+                    aria-invalid={isInvalid}
+                  />
+                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
                 </Field>
               );
             }}
