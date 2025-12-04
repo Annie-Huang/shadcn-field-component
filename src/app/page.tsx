@@ -12,6 +12,7 @@ import {
   FieldDescription,
   FieldError,
   FieldGroup,
+  FieldLabel,
   FieldLegend,
   FieldSeparator,
   FieldSet,
@@ -82,7 +83,19 @@ export default function Home() {
         }}
       >
         <FieldGroup>
-          <FormInput control={form.control} name='name' label='Name' />
+          {/*<FormInput control={form.control} name='name' label='Name' />*/}
+          <form.Field name='name'>
+            {(field) => {
+              const isInvalid =
+                field.state.meta.isTouched && !field.state.meta.isValid;
+
+              return (
+                <Field data-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                </Field>
+              );
+            }}
+          </form.Field>
 
           <FormSelect control={form.control} name='status' label='Status'>
             {PROJECT_STATUSES.map((status) => (
