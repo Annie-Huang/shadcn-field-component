@@ -89,6 +89,10 @@ export default function Home() {
             {(field) => <field.Input label='Name' />}
           </form.AppField>
 
+          <form.AppField name='status'>
+            {(field) => <field.Select label='Status' />}
+          </form.AppField>
+
           <form.AppField name='description'>
             {(field) => (
               <field.Textarea
