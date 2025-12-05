@@ -86,7 +86,7 @@ export default function Home() {
       >
         <FieldGroup>
           <form.AppField name='name'>
-            {(field) => <field.Input />}
+            {(field) => <field.Input label='Name' />}
           </form.AppField>
 
           {/*<FormSelect control={form.control} name='status' label='Status'>*/}
