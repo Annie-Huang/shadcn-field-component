@@ -42,36 +42,28 @@ export function FormBase({
   );
 
   return (
-    <Controller
-      control={control}
-      name={name}
-      render={({ field, fieldState }) => {
-        return (
-          <Field
-            data-invalid={fieldState.invalid}
-            orientation={horizontal ? 'horizontal' : undefined}
-          >
-            {/*{labelElement}*/}
-            {/*{control}*/}
+    <Field
+      data-invalid={fieldState.invalid}
+      orientation={horizontal ? 'horizontal' : undefined}
+    >
+      {/*{labelElement}*/}
+      {/*{control}*/}
 
-            {controlFirst ? (
-              <>
-                {control}
-                <FieldContent>
-                  {labelElement}
-                  {errorElem}
-                </FieldContent>
-              </>
-            ) : (
-              <>
-                <FieldContent>{labelElement}</FieldContent>
-                {control}
-                {errorElem}
-              </>
-            )}
-          </Field>
-        );
-      }}
-    />
+      {controlFirst ? (
+        <>
+          {control}
+          <FieldContent>
+            {labelElement}
+            {errorElem}
+          </FieldContent>
+        </>
+      ) : (
+        <>
+          <FieldContent>{labelElement}</FieldContent>
+          {control}
+          {errorElem}
+        </>
+      )}
+    </Field>
   );
 }
