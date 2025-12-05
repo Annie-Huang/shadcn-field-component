@@ -37,12 +37,6 @@ export function FormBase({
     </>
   );
 
-  const control = children({
-    ...field,
-    id: field.name,
-    'aria-invalid': fieldState.invalid,
-  });
-
   const errorElem = fieldState.invalid && (
     <FieldError errors={[fieldState.error]} />
   );
