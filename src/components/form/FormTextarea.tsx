@@ -2,7 +2,7 @@ import { useFieldContext } from '@/components/form/hooks';
 import { FormBase, FormControlProps } from '@/components/form/FormBase';
 import { Textarea } from '@/components/ui/textarea';
 
-export function FormInput(props: FormControlProps) {
+export function FormTextarea(props: FormControlProps) {
   const field = useFieldContext<string>();
   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
 
