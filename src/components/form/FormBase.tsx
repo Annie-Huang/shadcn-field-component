@@ -7,6 +7,7 @@ import {
   FieldLabel,
 } from '@/components/ui/field';
 import React, { ReactNode } from 'react';
+import { useFieldContext } from '@/components/form/hooks';
 
 export type FormControlProps = {
   label: string;
@@ -26,6 +27,9 @@ export function FormBase({
   controlFirst,
   horizontal,
 }: FormBaseProps) {
+  const field = useFieldContext();
+  const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
+
   return (
     <Controller
       control={control}
