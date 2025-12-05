@@ -89,6 +89,15 @@ export default function Home() {
             {(field) => <field.Input label='Name' />}
           </form.AppField>
 
+          <form.AppField name='description'>
+            {(field) => (
+              <field.Textarea
+                label='Description'
+                description='Be as detailed as possible'
+              />
+            )}
+          </form.AppField>
+
           {/*<FormSelect control={form.control} name='status' label='Status'>*/}
           {/*  {PROJECT_STATUSES.map((status) => (*/}
           {/*    <SelectItem key={status} value={status}>*/}
