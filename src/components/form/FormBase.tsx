@@ -37,13 +37,13 @@ export function FormBase({
     </>
   );
 
-  const errorElem = fieldState.invalid && (
-    <FieldError errors={[fieldState.error]} />
+  const errorElem = isInvalid && (
+    <FieldError errors={field.state.meta.errors} />
   );
 
   return (
     <Field
-      data-invalid={fieldState.invalid}
+      data-invalid={isInvalid}
       orientation={horizontal ? 'horizontal' : undefined}
     >
       {controlFirst ? (
