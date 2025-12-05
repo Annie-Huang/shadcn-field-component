@@ -7,6 +7,7 @@ const { fieldContext, formContext, useFieldContext, useFormContext } =
 const { useAppForm } = createFormHook({
   fieldComponents: {
     Input: FormInput,
+    Textarea: FormTextarea,
   },
   formComponents: {},
   fieldContext,
