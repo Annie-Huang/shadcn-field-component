@@ -1,13 +1,13 @@
 import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { useFieldContext } from '@/components/form/hooks';
-import { FormControlProps } from '@/components/form/FormBase';
+import { FormBase, FormControlProps } from '@/components/form/FormBase';
 
 export function FormInput(props: FormControlProps) {
   const field = useFieldContext<string>();
   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
 
-  return (
+  /*  return (
     <Field data-invalid={isInvalid}>
       <FieldLabel htmlFor={field.name}>Name</FieldLabel>
       <Input
@@ -20,5 +20,18 @@ export function FormInput(props: FormControlProps) {
       />
       {isInvalid && <FieldError errors={field.state.meta.errors} />}
     </Field>
+  );*/
+
+  return (
+    <FormBase {...props}>
+      <Input
+        id={field.name}
+        name={field.name}
+        value={field.state.value}
+        onBlur={field.handleBlur}
+        onChange={(e) => field.handleChange(e.target.value)}
+        aria-invalid={isInvalid}
+      />
+    </FormBase>
   );
 }
