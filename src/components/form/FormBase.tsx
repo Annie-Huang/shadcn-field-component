@@ -46,12 +46,9 @@ export function FormBase({
       data-invalid={fieldState.invalid}
       orientation={horizontal ? 'horizontal' : undefined}
     >
-      {/*{labelElement}*/}
-      {/*{control}*/}
-
       {controlFirst ? (
         <>
-          {control}
+          {children}
           <FieldContent>
             {labelElement}
             {errorElem}
@@ -60,7 +57,7 @@ export function FormBase({
       ) : (
         <>
           <FieldContent>{labelElement}</FieldContent>
-          {control}
+          {children}
           {errorElem}
         </>
       )}
