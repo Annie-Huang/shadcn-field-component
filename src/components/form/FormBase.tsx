@@ -30,28 +30,28 @@ export function FormBase({
   const field = useFieldContext();
   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
 
+  const labelElement = (
+    <>
+      <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+      {description && <FieldDescription>{description}</FieldDescription>}
+    </>
+  );
+
+  const control = children({
+    ...field,
+    id: field.name,
+    'aria-invalid': fieldState.invalid,
+  });
+
+  const errorElem = fieldState.invalid && (
+    <FieldError errors={[fieldState.error]} />
+  );
+
   return (
     <Controller
       control={control}
       name={name}
       render={({ field, fieldState }) => {
-        const labelElement = (
-          <>
-            <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-            {description && <FieldDescription>{description}</FieldDescription>}
-          </>
-        );
-
-        const control = children({
-          ...field,
-          id: field.name,
-          'aria-invalid': fieldState.invalid,
-        });
-
-        const errorElem = fieldState.invalid && (
-          <FieldError errors={[fieldState.error]} />
-        );
-
         return (
           <Field
             data-invalid={fieldState.invalid}
