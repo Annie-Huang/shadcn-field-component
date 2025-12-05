@@ -1,8 +1,9 @@
 import { Field, FieldError, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { useFieldContext } from '@/components/form/hooks';
+import { FormControlProps } from '@/components/form/FormBase';
 
-export function FormInput() {
+export function FormInput(props: FormControlProps) {
   const field = useFieldContext<string>();
   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
 
