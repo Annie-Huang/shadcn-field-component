@@ -1,6 +1,6 @@
-import { Input } from '@/components/ui/input';
 import { useFieldContext } from '@/components/form/hooks';
 import { FormBase, FormControlProps } from '@/components/form/FormBase';
+import { Textarea } from '@/components/ui/textarea';
 
 export function FormInput(props: FormControlProps) {
   const field = useFieldContext<string>();
@@ -8,7 +8,7 @@ export function FormInput(props: FormControlProps) {
 
   return (
     <FormBase {...props}>
-      <Input
+      <Textarea
         id={field.name}
         name={field.name}
         value={field.state.value}
