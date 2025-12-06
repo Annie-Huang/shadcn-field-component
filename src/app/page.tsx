@@ -154,14 +154,14 @@ export default function Home() {
                       type='button'
                       variant='outline'
                       size='sm'
-                      onClick={() => addUser({ email: '' })}
+                      onClick={() => field.pushValue({ email: '' })}
                     >
                       Add User
                     </Button>
                   </div>
 
                   <FieldGroup>
-                    {users.map((user, index) => (
+                    {field.state.value.map((user, index) => (
                       <Controller
                         key={user.id}
                         control={form.control}
