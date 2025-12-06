@@ -18,7 +18,13 @@ import {
   FieldSet,
 } from '@/components/ui/field';
 import { Button } from '@/components/ui/button';
-import { SelectItem } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import {
   InputGroup,
   InputGroupAddon,
@@ -106,13 +112,35 @@ export default function Home() {
             }}
           </form.Field>
 
-          {/*<FormSelect control={form.control} name='status' label='Status'>*/}
-          {/*  {PROJECT_STATUSES.map((status) => (*/}
-          {/*    <SelectItem key={status} value={status}>*/}
-          {/*      {status}*/}
-          {/*    </SelectItem>*/}
-          {/*  ))}*/}
-          {/*</FormSelect>*/}
+          <form.Field name='status'>
+            {(field) => {
+              const isInvalid =
+                field.state.meta.isTouched && !field.state.meta.isValid;
+              return (
+                <Field data-invalid={isInvalid}>
+                  <FieldLabel htmlFor={field.name}>Status</FieldLabel>
+                  <Select
+                    onValueChange={(e) =>
+                      field.handleChange(e as (typeof PROJECT_STATUSES)[number])
+                    }
+                    value={field.state.value}
+                  >
+                    <SelectTrigger aria-invalid={isInvalid} id={field.name}>
+                      <SelectValue onBlur={field.handleBlur} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {PROJECT_STATUSES.map((status) => (
+                        <SelectItem key={status} value={status}>
+                          {status}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                </Field>
+              );
+            }}
+          </form.Field>
 
           {/*<FormTextarea*/}
           {/*  control={form.control}*/}
