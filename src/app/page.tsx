@@ -106,112 +106,112 @@ export default function Home() {
             }}
           </form.Field>
 
-          <FormSelect control={form.control} name='status' label='Status'>
-            {PROJECT_STATUSES.map((status) => (
-              <SelectItem key={status} value={status}>
-                {status}
-              </SelectItem>
-            ))}
-          </FormSelect>
+          {/*<FormSelect control={form.control} name='status' label='Status'>*/}
+          {/*  {PROJECT_STATUSES.map((status) => (*/}
+          {/*    <SelectItem key={status} value={status}>*/}
+          {/*      {status}*/}
+          {/*    </SelectItem>*/}
+          {/*  ))}*/}
+          {/*</FormSelect>*/}
 
-          <FormTextarea
-            control={form.control}
-            name='description'
-            label='Description'
-            description='Be as detailed as possible'
-          />
+          {/*<FormTextarea*/}
+          {/*  control={form.control}*/}
+          {/*  name='description'*/}
+          {/*  label='Description'*/}
+          {/*  description='Be as detailed as possible'*/}
+          {/*/>*/}
 
-          <FieldSet>
-            <FieldContent>
-              <FieldLegend>Notifications</FieldLegend>
-              <FieldDescription>
-                Select how you would like to receive notifications
-              </FieldDescription>
-            </FieldContent>
+          {/*<FieldSet>*/}
+          {/*  <FieldContent>*/}
+          {/*    <FieldLegend>Notifications</FieldLegend>*/}
+          {/*    <FieldDescription>*/}
+          {/*      Select how you would like to receive notifications*/}
+          {/*    </FieldDescription>*/}
+          {/*  </FieldContent>*/}
 
-            <FieldGroup data-slot='checkbox-group'>
-              <FormCheckbox
-                name='notifications.email'
-                label='Email'
-                control={form.control}
-              />
-              <FormCheckbox
-                name='notifications.sms'
-                label='Text'
-                control={form.control}
-              />
-              <FormCheckbox
-                name='notifications.push'
-                label='In App'
-                control={form.control}
-              />
-            </FieldGroup>
-          </FieldSet>
+          {/*  <FieldGroup data-slot='checkbox-group'>*/}
+          {/*    <FormCheckbox*/}
+          {/*      name='notifications.email'*/}
+          {/*      label='Email'*/}
+          {/*      control={form.control}*/}
+          {/*    />*/}
+          {/*    <FormCheckbox*/}
+          {/*      name='notifications.sms'*/}
+          {/*      label='Text'*/}
+          {/*      control={form.control}*/}
+          {/*    />*/}
+          {/*    <FormCheckbox*/}
+          {/*      name='notifications.push'*/}
+          {/*      label='In App'*/}
+          {/*      control={form.control}*/}
+          {/*    />*/}
+          {/*  </FieldGroup>*/}
+          {/*</FieldSet>*/}
 
-          <FieldSeparator />
+          {/*<FieldSeparator />*/}
 
-          <FieldSet>
-            <div className='flex justify-between gap-2 items-center'>
-              <FieldContent>
-                <FieldLegend variant='label' className='mb-0'>
-                  User Email Address
-                </FieldLegend>
-                <FieldDescription>
-                  Add up to 5 users to this project (including yourself).
-                </FieldDescription>
-                {form.formState.errors.users?.root && (
-                  <FieldError errors={[form.formState.errors.users?.root]} />
-                )}
-              </FieldContent>
+          {/*<FieldSet>*/}
+          {/*  <div className='flex justify-between gap-2 items-center'>*/}
+          {/*    <FieldContent>*/}
+          {/*      <FieldLegend variant='label' className='mb-0'>*/}
+          {/*        User Email Address*/}
+          {/*      </FieldLegend>*/}
+          {/*      <FieldDescription>*/}
+          {/*        Add up to 5 users to this project (including yourself).*/}
+          {/*      </FieldDescription>*/}
+          {/*      {form.formState.errors.users?.root && (*/}
+          {/*        <FieldError errors={[form.formState.errors.users?.root]} />*/}
+          {/*      )}*/}
+          {/*    </FieldContent>*/}
 
-              <Button
-                type='button'
-                variant='outline'
-                size='sm'
-                onClick={() => addUser({ email: '' })}
-              >
-                Add User
-              </Button>
-            </div>
+          {/*    <Button*/}
+          {/*      type='button'*/}
+          {/*      variant='outline'*/}
+          {/*      size='sm'*/}
+          {/*      onClick={() => addUser({ email: '' })}*/}
+          {/*    >*/}
+          {/*      Add User*/}
+          {/*    </Button>*/}
+          {/*  </div>*/}
 
-            <FieldGroup>
-              {users.map((user, index) => (
-                <Controller
-                  key={user.id}
-                  control={form.control}
-                  name={`users.${index}.email`}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <InputGroup>
-                        <InputGroupInput
-                          {...field}
-                          type='email'
-                          id={field.name}
-                          aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
-                          aria-label={`User ${index + 1} email`}
-                        />
-                        <InputGroupAddon align='inline-end'>
-                          <InputGroupButton
-                            type='button'
-                            variant='ghost'
-                            size='icon-xs'
-                            onClick={() => removeUser(index)}
-                            aria-label={`Remove user ${index + 1}`}
-                          >
-                            <XIcon />
-                          </InputGroupButton>
-                        </InputGroupAddon>
-                      </InputGroup>
+          {/*  <FieldGroup>*/}
+          {/*    {users.map((user, index) => (*/}
+          {/*      <Controller*/}
+          {/*        key={user.id}*/}
+          {/*        control={form.control}*/}
+          {/*        name={`users.${index}.email`}*/}
+          {/*        render={({ field, fieldState }) => (*/}
+          {/*          <Field data-invalid={fieldState.invalid}>*/}
+          {/*            <InputGroup>*/}
+          {/*              <InputGroupInput*/}
+          {/*                {...field}*/}
+          {/*                type='email'*/}
+          {/*                id={field.name}*/}
+          {/*                aria-invalid={fieldState.invalid} // control the input border to turn into red color in error*/}
+          {/*                aria-label={`User ${index + 1} email`}*/}
+          {/*              />*/}
+          {/*              <InputGroupAddon align='inline-end'>*/}
+          {/*                <InputGroupButton*/}
+          {/*                  type='button'*/}
+          {/*                  variant='ghost'*/}
+          {/*                  size='icon-xs'*/}
+          {/*                  onClick={() => removeUser(index)}*/}
+          {/*                  aria-label={`Remove user ${index + 1}`}*/}
+          {/*                >*/}
+          {/*                  <XIcon />*/}
+          {/*                </InputGroupButton>*/}
+          {/*              </InputGroupAddon>*/}
+          {/*            </InputGroup>*/}
 
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
-                      )}
-                    </Field>
-                  )}
-                />
-              ))}
-            </FieldGroup>
-          </FieldSet>
+          {/*            {fieldState.invalid && (*/}
+          {/*              <FieldError errors={[fieldState.error]} />*/}
+          {/*            )}*/}
+          {/*          </Field>*/}
+          {/*        )}*/}
+          {/*      />*/}
+          {/*    ))}*/}
+          {/*  </FieldGroup>*/}
+          {/*</FieldSet>*/}
 
           <Button>Create</Button>
         </FieldGroup>
