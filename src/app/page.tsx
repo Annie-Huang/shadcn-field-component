@@ -133,68 +133,76 @@ export default function Home() {
 
           <FieldSeparator />
 
-          <FieldSet>
-            <div className='flex justify-between gap-2 items-center'>
-              <FieldContent>
-                <FieldLegend variant='label' className='mb-0'>
-                  User Email Address
-                </FieldLegend>
-                <FieldDescription>
-                  Add up to 5 users to this project (including yourself).
-                </FieldDescription>
-                {form.formState.errors.users?.root && (
-                  <FieldError errors={[form.formState.errors.users?.root]} />
-                )}
-              </FieldContent>
-
-              <Button
-                type='button'
-                variant='outline'
-                size='sm'
-                onClick={() => addUser({ email: '' })}
-              >
-                Add User
-              </Button>
-            </div>
-
-            <FieldGroup>
-              {users.map((user, index) => (
-                <Controller
-                  key={user.id}
-                  control={form.control}
-                  name={`users.${index}.email`}
-                  render={({ field, fieldState }) => (
-                    <Field data-invalid={fieldState.invalid}>
-                      <InputGroup>
-                        <InputGroupInput
-                          {...field}
-                          type='email'
-                          id={field.name}
-                          aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
-                          aria-label={`User ${index + 1} email`}
+          <form.AppField name='users' mode='array'>
+            {(field) => {
+              return (
+                <FieldSet>
+                  <div className='flex justify-between gap-2 items-center'>
+                    <FieldContent>
+                      <FieldLegend variant='label' className='mb-0'>
+                        User Email Address
+                      </FieldLegend>
+                      <FieldDescription>
+                        Add up to 5 users to this project (including yourself).
+                      </FieldDescription>
+                      {form.formState.errors.users?.root && (
+                        <FieldError
+                          errors={[form.formState.errors.users?.root]}
                         />
-                        <InputGroupAddon align='inline-end'>
-                          <InputGroupButton
-                            type='button'
-                            variant='ghost'
-                            size='icon-xs'
-                            onClick={() => removeUser(index)}
-                            aria-label={`Remove user ${index + 1}`}
-                          >
-                            <XIcon />
-                          </InputGroupButton>
-                        </InputGroupAddon>
-                      </InputGroup>
-
-                      {fieldState.invalid && (
-                        <FieldError errors={[fieldState.error]} />
                       )}
-                    </Field>
-                  )}
-                />
-              ))}
-            </FieldGroup>
-          </FieldSet>
+                    </FieldContent>
+
+                    <Button
+                      type='button'
+                      variant='outline'
+                      size='sm'
+                      onClick={() => addUser({ email: '' })}
+                    >
+                      Add User
+                    </Button>
+                  </div>
+
+                  <FieldGroup>
+                    {users.map((user, index) => (
+                      <Controller
+                        key={user.id}
+                        control={form.control}
+                        name={`users.${index}.email`}
+                        render={({ field, fieldState }) => (
+                          <Field data-invalid={fieldState.invalid}>
+                            <InputGroup>
+                              <InputGroupInput
+                                {...field}
+                                type='email'
+                                id={field.name}
+                                aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+                                aria-label={`User ${index + 1} email`}
+                              />
+                              <InputGroupAddon align='inline-end'>
+                                <InputGroupButton
+                                  type='button'
+                                  variant='ghost'
+                                  size='icon-xs'
+                                  onClick={() => removeUser(index)}
+                                  aria-label={`Remove user ${index + 1}`}
+                                >
+                                  <XIcon />
+                                </InputGroupButton>
+                              </InputGroupAddon>
+                            </InputGroup>
+
+                            {fieldState.invalid && (
+                              <FieldError errors={[fieldState.error]} />
+                            )}
+                          </Field>
+                        )}
+                      />
+                    ))}
+                  </FieldGroup>
+                </FieldSet>
+              );
+            }}
+          </form.AppField>
 
           <Button>Create</Button>
         </FieldGroup>
