@@ -172,11 +172,15 @@ export default function Home() {
                             <Field data-invalid={isInvalid}>
                               <InputGroup>
                                 <InputGroupInput
-                                  {...field}
                                   type='email'
-                                  id={field.name}
+                                  id={innerField.name}
                                   aria-invalid={isInvalid} // control the input border to turn into red color in error
                                   aria-label={`User ${index + 1} email`}
+                                  onBlur={innerField.handleBlur}
+                                  onChange={(e) =>
+                                    innerField.handleChange(e.target.value)
+                                  }
+                                  value={innerField.state.value}
                                 />
                                 <InputGroupAddon align='inline-end'>
                                   <InputGroupButton
