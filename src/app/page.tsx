@@ -41,6 +41,7 @@ import {
 
 import { useForm } from '@tanstack/react-form';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 type FormData = z.infer<typeof projectSchema>;
 
@@ -142,12 +143,31 @@ export default function Home() {
             }}
           </form.Field>
 
-          {/*<FormTextarea*/}
-          {/*  control={form.control}*/}
-          {/*  name='description'*/}
-          {/*  label='Description'*/}
-          {/*  description='Be as detailed as possible'*/}
-          {/*/>*/}
+          <form.Field name='description'>
+            {(field) => {
+              const isInvalid =
+                field.state.meta.isTouched && !field.state.meta.isValid;
+              return (
+                <Field data-invalid={isInvalid}>
+                  <FieldContent>
+                    <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                    <FieldDescription>
+                      Be as detailed as possible
+                    </FieldDescription>
+                  </FieldContent>
+                  <Textarea
+                    id={field.name}
+                    name={field.name}
+                    value={field.state.value}
+                    onBlur={field.handleBlur}
+                    onChange={(e) => field.handleChange(e.target.value)}
+                    aria-invalid={isInvalid}
+                  />
+                  {isInvalid && <FieldError errors={field.state.meta.errors} />}
+                </Field>
+              );
+            }}
+          </form.Field>
 
           {/*<FieldSet>*/}
           {/*  <FieldContent>*/}
