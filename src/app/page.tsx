@@ -145,10 +145,8 @@ export default function Home() {
                       <FieldDescription>
                         Add up to 5 users to this project (including yourself).
                       </FieldDescription>
-                      {form.formState.errors.users?.root && (
-                        <FieldError
-                          errors={[form.formState.errors.users?.root]}
-                        />
+                      {field.state.meta.errors && (
+                        <FieldError errors={field.state.meta.errors} />
                       )}
                     </FieldContent>
 
