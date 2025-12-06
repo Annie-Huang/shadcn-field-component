@@ -162,38 +162,34 @@ export default function Home() {
 
                   <FieldGroup>
                     {field.state.value.map((user, index) => (
-                      <form.AppField
-                        key={index}
-                        name={`users[${index}].email`}
-                        render={({ field, fieldState }) => (
-                          <Field data-invalid={fieldState.invalid}>
-                            <InputGroup>
-                              <InputGroupInput
-                                {...field}
-                                type='email'
-                                id={field.name}
-                                aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
-                                aria-label={`User ${index + 1} email`}
-                              />
-                              <InputGroupAddon align='inline-end'>
-                                <InputGroupButton
-                                  type='button'
-                                  variant='ghost'
-                                  size='icon-xs'
-                                  onClick={() => removeUser(index)}
-                                  aria-label={`Remove user ${index + 1}`}
-                                >
-                                  <XIcon />
-                                </InputGroupButton>
-                              </InputGroupAddon>
-                            </InputGroup>
+                      <form.AppField key={index} name={`users[${index}].email`}>
+                        <Field data-invalid={fieldState.invalid}>
+                          <InputGroup>
+                            <InputGroupInput
+                              {...field}
+                              type='email'
+                              id={field.name}
+                              aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+                              aria-label={`User ${index + 1} email`}
+                            />
+                            <InputGroupAddon align='inline-end'>
+                              <InputGroupButton
+                                type='button'
+                                variant='ghost'
+                                size='icon-xs'
+                                onClick={() => removeUser(index)}
+                                aria-label={`Remove user ${index + 1}`}
+                              >
+                                <XIcon />
+                              </InputGroupButton>
+                            </InputGroupAddon>
+                          </InputGroup>
 
-                            {fieldState.invalid && (
-                              <FieldError errors={[fieldState.error]} />
-                            )}
-                          </Field>
-                        )}
-                      />
+                          {fieldState.invalid && (
+                            <FieldError errors={[fieldState.error]} />
+                          )}
+                        </Field>
+                      </form.AppField>
                     ))}
                   </FieldGroup>
                 </FieldSet>
