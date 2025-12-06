@@ -1,9 +1,7 @@
 'use client';
 
-// import { Controller, useFieldArray, useForm } from 'react-hook-form';
 import z from 'zod';
 import { PROJECT_STATUSES, projectSchema } from '@/schemas/project';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { createProject } from '@/actions/project';
 import {
@@ -12,7 +10,6 @@ import {
   FieldDescription,
   FieldError,
   FieldGroup,
-  FieldLabel,
   FieldLegend,
   FieldSeparator,
   FieldSet,
@@ -26,15 +23,7 @@ import {
   InputGroupInput,
 } from '@/components/ui/input-group';
 import { XIcon } from 'lucide-react';
-import {
-  FormCheckbox,
-  FormInput,
-  FormSelect,
-  FormTextarea,
-} from '@/components/form';
 
-import { useForm } from '@tanstack/react-form';
-import { Input } from '@/components/ui/input';
 import { useAppForm } from '@/components/form/hooks';
 
 type FormData = z.infer<typeof projectSchema>;
