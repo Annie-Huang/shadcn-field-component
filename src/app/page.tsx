@@ -187,7 +187,7 @@ export default function Home() {
                                     type='button'
                                     variant='ghost'
                                     size='icon-xs'
-                                    onClick={() => removeUser(index)}
+                                    onClick={() => field.removeValue(index)}
                                     aria-label={`Remove user ${index + 1}`}
                                   >
                                     <XIcon />
