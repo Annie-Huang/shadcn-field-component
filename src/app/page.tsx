@@ -189,8 +189,10 @@ export default function Home() {
                                 </InputGroupAddon>
                               </InputGroup>
 
-                              {fieldState.invalid && (
-                                <FieldError errors={[fieldState.error]} />
+                              {isInvalid && (
+                                <FieldError
+                                  errors={innerField.state.meta.errors}
+                                />
                               )}
                             </Field>
                           );
