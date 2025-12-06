@@ -90,7 +90,15 @@ export default function Home() {
           </form.AppField>
 
           <form.AppField name='status'>
-            {(field) => <field.Select label='Status' />}
+            {(field) => (
+              <field.Select label='Status'>
+                {PROJECT_STATUSES.map((status) => (
+                  <SelectItem key={status} value={status}>
+                    {status}
+                  </SelectItem>
+                ))}
+              </field.Select>
+            )}
           </form.AppField>
 
           <form.AppField name='description'>
