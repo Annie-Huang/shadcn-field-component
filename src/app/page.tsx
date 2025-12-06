@@ -255,70 +255,88 @@ export default function Home() {
             </FieldGroup>
           </FieldSet>
 
-          {/*<FieldSeparator />*/}
+          <FieldSeparator />
 
-          {/*<FieldSet>*/}
-          {/*  <div className='flex justify-between gap-2 items-center'>*/}
-          {/*    <FieldContent>*/}
-          {/*      <FieldLegend variant='label' className='mb-0'>*/}
-          {/*        User Email Address*/}
-          {/*      </FieldLegend>*/}
-          {/*      <FieldDescription>*/}
-          {/*        Add up to 5 users to this project (including yourself).*/}
-          {/*      </FieldDescription>*/}
-          {/*      {form.formState.errors.users?.root && (*/}
-          {/*        <FieldError errors={[form.formState.errors.users?.root]} />*/}
-          {/*      )}*/}
-          {/*    </FieldContent>*/}
-
-          {/*    <Button*/}
-          {/*      type='button'*/}
-          {/*      variant='outline'*/}
-          {/*      size='sm'*/}
-          {/*      onClick={() => addUser({ email: '' })}*/}
-          {/*    >*/}
-          {/*      Add User*/}
-          {/*    </Button>*/}
-          {/*  </div>*/}
-
-          {/*  <FieldGroup>*/}
-          {/*    {users.map((user, index) => (*/}
-          {/*      <Controller*/}
-          {/*        key={user.id}*/}
-          {/*        control={form.control}*/}
-          {/*        name={`users.${index}.email`}*/}
-          {/*        render={({ field, fieldState }) => (*/}
-          {/*          <Field data-invalid={fieldState.invalid}>*/}
-          {/*            <InputGroup>*/}
-          {/*              <InputGroupInput*/}
-          {/*                {...field}*/}
-          {/*                type='email'*/}
-          {/*                id={field.name}*/}
-          {/*                aria-invalid={fieldState.invalid} // control the input border to turn into red color in error*/}
-          {/*                aria-label={`User ${index + 1} email`}*/}
-          {/*              />*/}
-          {/*              <InputGroupAddon align='inline-end'>*/}
-          {/*                <InputGroupButton*/}
-          {/*                  type='button'*/}
-          {/*                  variant='ghost'*/}
-          {/*                  size='icon-xs'*/}
-          {/*                  onClick={() => removeUser(index)}*/}
-          {/*                  aria-label={`Remove user ${index + 1}`}*/}
-          {/*                >*/}
-          {/*                  <XIcon />*/}
-          {/*                </InputGroupButton>*/}
-          {/*              </InputGroupAddon>*/}
-          {/*            </InputGroup>*/}
-
-          {/*            {fieldState.invalid && (*/}
-          {/*              <FieldError errors={[fieldState.error]} />*/}
-          {/*            )}*/}
-          {/*          </Field>*/}
-          {/*        )}*/}
-          {/*      />*/}
-          {/*    ))}*/}
-          {/*  </FieldGroup>*/}
-          {/*</FieldSet>*/}
+          <form.Field name='users' mode='array'>
+            {(field) => {
+              return (
+                <FieldSet>
+                  <div className='flex justify-between gap-2 items-center'>
+                    <FieldContent>
+                      <FieldLegend variant='label' className='mb-0'>
+                        User Email Addresses
+                      </FieldLegend>
+                      <FieldDescription>
+                        Add up to 5 users to this project (including yourself).
+                      </FieldDescription>
+                      {field.state.meta.errors && (
+                        <FieldError errors={field.state.meta.errors} />
+                      )}
+                    </FieldContent>
+                    <Button
+                      type='button'
+                      variant='outline'
+                      size='sm'
+                      onClick={() => field.pushValue({ email: '' })}
+                    >
+                      Add User
+                    </Button>
+                  </div>
+                  <FieldGroup>
+                    {field.state.value.map((_, index) => (
+                      <form.Field key={index} name={`users[${index}].email`}>
+                        {(innerField) => {
+                          const isInvalid =
+                            innerField.state.meta.isTouched &&
+                            !innerField.state.meta.isValid;
+                          return (
+                            <Field
+                              orientation='horizontal'
+                              data-invalid={isInvalid}
+                            >
+                              <FieldContent>
+                                <InputGroup>
+                                  <InputGroupInput
+                                    id={innerField.name}
+                                    aria-invalid={isInvalid}
+                                    aria-label={`User ${index + 1} email`}
+                                    type='email'
+                                    onBlur={innerField.handleBlur}
+                                    onChange={(e) =>
+                                      innerField.handleChange(e.target.value)
+                                    }
+                                    value={innerField.state.value}
+                                  />
+                                  {field.state.value.length > 1 && (
+                                    <InputGroupAddon align='inline-end'>
+                                      <InputGroupButton
+                                        type='button'
+                                        variant='ghost'
+                                        size='icon-xs'
+                                        onClick={() => field.removeValue(index)}
+                                        aria-label={`Remove User ${index + 1}`}
+                                      >
+                                        <XIcon />
+                                      </InputGroupButton>
+                                    </InputGroupAddon>
+                                  )}
+                                </InputGroup>
+                                {isInvalid && (
+                                  <FieldError
+                                    errors={innerField.state.meta.errors}
+                                  />
+                                )}
+                              </FieldContent>
+                            </Field>
+                          );
+                        }}
+                      </form.Field>
+                    ))}
+                  </FieldGroup>
+                </FieldSet>
+              );
+            }}
+          </form.Field>
 
           <Button>Create</Button>
         </FieldGroup>
