@@ -119,21 +119,15 @@ export default function Home() {
             </FieldContent>
 
             <FieldGroup data-slot='checkbox-group'>
-              <FormCheckbox
-                name='notifications.email'
-                label='Email'
-                control={form.control}
-              />
-              <FormCheckbox
-                name='notifications.sms'
-                label='Text'
-                control={form.control}
-              />
-              <FormCheckbox
-                name='notifications.push'
-                label='In App'
-                control={form.control}
-              />
+              <form.AppField name='notifications.email'>
+                {(field) => <field.Checkbox label='Email' />}
+              </form.AppField>
+              <form.AppField name='notifications.sms'>
+                {(field) => <field.Checkbox label='Text' />}
+              </form.AppField>
+              <form.AppField name='notifications.push'>
+                {(field) => <field.Checkbox label='In App' />}
+              </form.AppField>
             </FieldGroup>
           </FieldSet>
 
