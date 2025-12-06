@@ -110,21 +110,6 @@ export default function Home() {
             )}
           </form.AppField>
 
-          {/*<FormSelect control={form.control} name='status' label='Status'>*/}
-          {/*  {PROJECT_STATUSES.map((status) => (*/}
-          {/*    <SelectItem key={status} value={status}>*/}
-          {/*      {status}*/}
-          {/*    </SelectItem>*/}
-          {/*  ))}*/}
-          {/*</FormSelect>*/}
-
-          {/*<FormTextarea*/}
-          {/*  control={form.control}*/}
-          {/*  name='description'*/}
-          {/*  label='Description'*/}
-          {/*  description='Be as detailed as possible'*/}
-          {/*/>*/}
-
           {/*<FieldSet>*/}
           {/*  <FieldContent>*/}
           {/*    <FieldLegend>Notifications</FieldLegend>*/}
