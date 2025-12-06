@@ -42,6 +42,7 @@ import {
 import { useForm } from '@tanstack/react-form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
 
 type FormData = z.infer<typeof projectSchema>;
 
@@ -169,32 +170,90 @@ export default function Home() {
             }}
           </form.Field>
 
-          {/*<FieldSet>*/}
-          {/*  <FieldContent>*/}
-          {/*    <FieldLegend>Notifications</FieldLegend>*/}
-          {/*    <FieldDescription>*/}
-          {/*      Select how you would like to receive notifications*/}
-          {/*    </FieldDescription>*/}
-          {/*  </FieldContent>*/}
+          <FieldSet>
+            <FieldContent>
+              <FieldLegend>Notifications</FieldLegend>
+              <FieldDescription>
+                Select how you would like to receive notifications.
+              </FieldDescription>
+            </FieldContent>
+            <FieldGroup data-slot='checkbox-group'>
+              <form.Field name='notifications.email'>
+                {(field) => {
+                  const isInvalid =
+                    field.state.meta.isTouched && !field.state.meta.isValid;
+                  return (
+                    <Field data-invalid={isInvalid} orientation='horizontal'>
+                      <Checkbox
+                        id={field.name}
+                        name={field.name}
+                        checked={field.state.value}
+                        onBlur={field.handleBlur}
+                        onCheckedChange={(e) => field.handleChange(e === true)}
+                        aria-invalid={isInvalid}
+                      />
+                      <FieldLabel className='font-normal' htmlFor={field.name}>
+                        Email
+                      </FieldLabel>
+                      {isInvalid && (
+                        <FieldError errors={field.state.meta.errors} />
+                      )}
+                    </Field>
+                  );
+                }}
+              </form.Field>
 
-          {/*  <FieldGroup data-slot='checkbox-group'>*/}
-          {/*    <FormCheckbox*/}
-          {/*      name='notifications.email'*/}
-          {/*      label='Email'*/}
-          {/*      control={form.control}*/}
-          {/*    />*/}
-          {/*    <FormCheckbox*/}
-          {/*      name='notifications.sms'*/}
-          {/*      label='Text'*/}
-          {/*      control={form.control}*/}
-          {/*    />*/}
-          {/*    <FormCheckbox*/}
-          {/*      name='notifications.push'*/}
-          {/*      label='In App'*/}
-          {/*      control={form.control}*/}
-          {/*    />*/}
-          {/*  </FieldGroup>*/}
-          {/*</FieldSet>*/}
+              <form.Field name='notifications.sms'>
+                {(field) => {
+                  const isInvalid =
+                    field.state.meta.isTouched && !field.state.meta.isValid;
+                  return (
+                    <Field data-invalid={isInvalid} orientation='horizontal'>
+                      <Checkbox
+                        id={field.name}
+                        name={field.name}
+                        checked={field.state.value}
+                        onBlur={field.handleBlur}
+                        onCheckedChange={(e) => field.handleChange(e === true)}
+                        aria-invalid={isInvalid}
+                      />
+                      <FieldLabel className='font-normal' htmlFor={field.name}>
+                        Text
+                      </FieldLabel>
+                      {isInvalid && (
+                        <FieldError errors={field.state.meta.errors} />
+                      )}
+                    </Field>
+                  );
+                }}
+              </form.Field>
+
+              <form.Field name='notifications.push'>
+                {(field) => {
+                  const isInvalid =
+                    field.state.meta.isTouched && !field.state.meta.isValid;
+                  return (
+                    <Field data-invalid={isInvalid} orientation='horizontal'>
+                      <Checkbox
+                        id={field.name}
+                        name={field.name}
+                        checked={field.state.value}
+                        onBlur={field.handleBlur}
+                        onCheckedChange={(e) => field.handleChange(e === true)}
+                        aria-invalid={isInvalid}
+                      />
+                      <FieldLabel className='font-normal' htmlFor={field.name}>
+                        In App
+                      </FieldLabel>
+                      {isInvalid && (
+                        <FieldError errors={field.state.meta.errors} />
+                      )}
+                    </Field>
+                  );
+                }}
+              </form.Field>
+            </FieldGroup>
+          </FieldSet>
 
           {/*<FieldSeparator />*/}
 
