@@ -162,10 +162,9 @@ export default function Home() {
 
                   <FieldGroup>
                     {field.state.value.map((user, index) => (
-                      <Controller
-                        key={user.id}
-                        control={form.control}
-                        name={`users.${index}.email`}
+                      <form.AppField
+                        key={index}
+                        name={`users[${index}].email`}
                         render={({ field, fieldState }) => (
                           <Field data-invalid={fieldState.invalid}>
                             <InputGroup>
