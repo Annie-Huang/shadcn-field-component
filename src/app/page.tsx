@@ -70,12 +70,6 @@ export default function Home() {
     },
   });
 
-  // const {
-  //   fields: users,
-  //   append: addUser,
-  //   remove: removeUser,
-  // } = useFieldArray({ control: form.control, name: 'users' });
-
   return (
     <div className='container px-4 mx-auto my-6'>
       <form
