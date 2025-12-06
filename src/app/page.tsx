@@ -131,34 +131,7 @@ export default function Home() {
             </FieldGroup>
           </FieldSet>
 
-          {/*<FieldSet>*/}
-          {/*  <FieldContent>*/}
-          {/*    <FieldLegend>Notifications</FieldLegend>*/}
-          {/*    <FieldDescription>*/}
-          {/*      Select how you would like to receive notifications*/}
-          {/*    </FieldDescription>*/}
-          {/*  </FieldContent>*/}
-
-          {/*  <FieldGroup data-slot='checkbox-group'>*/}
-          {/*    <FormCheckbox*/}
-          {/*      name='notifications.email'*/}
-          {/*      label='Email'*/}
-          {/*      control={form.control}*/}
-          {/*    />*/}
-          {/*    <FormCheckbox*/}
-          {/*      name='notifications.sms'*/}
-          {/*      label='Text'*/}
-          {/*      control={form.control}*/}
-          {/*    />*/}
-          {/*    <FormCheckbox*/}
-          {/*      name='notifications.push'*/}
-          {/*      label='In App'*/}
-          {/*      control={form.control}*/}
-          {/*    />*/}
-          {/*  </FieldGroup>*/}
-          {/*</FieldSet>*/}
-
-          {/*<FieldSeparator />*/}
+          <FieldSeparator />
 
           {/*<FieldSet>*/}
           {/*  <div className='flex justify-between gap-2 items-center'>*/}
