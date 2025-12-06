@@ -163,15 +163,19 @@ export default function Home() {
                   <FieldGroup>
                     {field.state.value.map((user, index) => (
                       <form.AppField key={index} name={`users[${index}].email`}>
-                        {(field) => {
+                        {(innerField) => {
+                          const isInvalid =
+                            innerField.state.meta.isTouched &&
+                            !innerField.state.meta.isValid;
+
                           return (
-                            <Field data-invalid={fieldState.invalid}>
+                            <Field data-invalid={isInvalid}>
                               <InputGroup>
                                 <InputGroupInput
                                   {...field}
                                   type='email'
                                   id={field.name}
-                                  aria-invalid={fieldState.invalid} // control the input border to turn into red color in error
+                                  aria-invalid={isInvalid} // control the input border to turn into red color in error
                                   aria-label={`User ${index + 1} email`}
                                 />
                                 <InputGroupAddon align='inline-end'>
